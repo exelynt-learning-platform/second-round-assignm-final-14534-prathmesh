@@ -102,8 +102,3 @@ button {
     font-size: 14px;
   }
 }
-
-.messages {
-  overflow-y: auto;
-  scroll-behavior: smooth;
-}
