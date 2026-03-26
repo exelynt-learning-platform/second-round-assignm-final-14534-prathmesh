@@ -1,6 +1,8 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
 
+const API_BASE_URL = process.env.REACT_APP_API_BASE_URL;
+
 // Async API call
 export const sendMessage = createAsyncThunk(
   'chat/sendMessage',
@@ -9,7 +11,7 @@ export const sendMessage = createAsyncThunk(
       const { messages } = getState().chat;
 
       const response = await axios.post(
-        'http://localhost:5000/chat',
+        `${API_BASE_URL}/chat`,
         { messages }
       );
 
