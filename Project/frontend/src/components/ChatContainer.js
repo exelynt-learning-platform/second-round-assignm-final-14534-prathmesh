@@ -16,7 +16,7 @@ const error = useSelector((state) => state.chat.error);
     if (!input.trim()) return;
 
     dispatch(addUserMessage(input));
-    dispatch(sendMessage());
+    dispatch(sendMessage(input));
     setInput('');
   };
 
