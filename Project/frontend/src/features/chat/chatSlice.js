@@ -9,14 +9,11 @@ export const sendMessage = createAsyncThunk(
       const { messages } = getState().chat;
 
       // Include latest message explicitly (safe + predictable)
-      const updatedMessages = [
-        ...messages,
-        { role: 'user', content: newMessage },
-      ];
+      
 
-      const res = await axios.post(
+      const response = await axios.post(
         `${process.env.REACT_APP_API_URL}/chat`,
-        { messages: updatedMessages }
+        { messages }
       );
 
 
