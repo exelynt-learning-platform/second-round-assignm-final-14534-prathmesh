@@ -4,14 +4,21 @@ import axios from 'axios';
 // Async API call
 export const sendMessage = createAsyncThunk(
   'chat/sendMessage',
-  async (_, { getState, rejectWithValue }) => {
+  async (newMessage, { getState, rejectWithValue }) => {
     try {
       const { messages } = getState().chat;
 
-      const response = await axios.post(
-        'http://localhost:5000/chat',
-        { messages }
+      // Include latest message explicitly (safe + predictable)
+      const updatedMessages = [
+        ...messages,
+        { role: 'user', content: newMessage },
+      ];
+
+      const res = await axios.post(
+        `${process.env.REACT_APP_API_URL}/chat`,
+        { messages: updatedMessages }
       );
+
 
       return response.data;
     } catch (error) {
