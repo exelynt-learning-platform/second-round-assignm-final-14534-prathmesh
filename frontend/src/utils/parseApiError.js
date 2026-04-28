@@ -2,8 +2,7 @@ export const parseApiError = (error) => {
   // Axios error response
   const message = error?.response?.data?.message || "";
   const status = error?.response?.status;
-console.log(message);
-return message;
+
   
   if (!error.response) {
     return "Network error. Please check your internet connection.";
@@ -38,5 +37,6 @@ return message;
     return "Request timed out. Please try again.";
   }
 
+   
   return message || "Something went wrong. Please try again.";
 };

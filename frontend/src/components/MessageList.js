@@ -1,14 +1,15 @@
 import React, { useEffect, useRef } from "react";
 import Message from "./Message";
 
-const MessageList = ({ messages, loading, error, children }) => {
+const MessageList = ({ messages, loading }) => {
   const bottomRef = useRef(null);
 
   useEffect(() => {
     bottomRef.current?.scrollIntoView({ behavior: "smooth" });
   }, [messages, loading]);
 
-  return (<>    {error?<>{children}</>:<div className="flex-grow-1 overflow-auto p-3 bg-light">
+  return (
+    <div className="flex-grow-1 overflow-auto p-3 bg-light">
       
 
         {messages.map((msg, i) => (
@@ -22,9 +23,7 @@ const MessageList = ({ messages, loading, error, children }) => {
         )}
 
       <div ref={bottomRef}></div>
-    </div>}
-    </>
-
+    </div>
   );
 };
 

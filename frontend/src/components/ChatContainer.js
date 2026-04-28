@@ -29,20 +29,18 @@ const ChatContainer = () => {
 };
 
   return (
-    <>
+    <>{error && (<div className="card m-auto popup p-3">{error} 
+     <button className="btn btn-warning btn-sm m-1" onClick={handleRetry} disabled={loading}>
+            Retry
+            </button>
+    </div>)}
     
     <div className="d-flex flex-column vh-100 overflow-hidden">
       <div className="bg-dark text-white p-3 text-center">
         <h4>ChatBox</h4>
       </div>
 
-      <MessageList messages={messages} loading={loading} error={error}>
-        {error && (<div className="card m-auto popup p-3">{error} 
-     <button className="btn btn-warning btn-xsm btn-sm m-2" onClick={ ()=>dispatch(clearError())} disabled={loading}>
-            Ok
-            </button>
-    </div>)}
-      </MessageList>
+      <MessageList messages={messages} loading={loading} />
       {/* {error && <div className="text-danger text-center">{error}</div>} */}
         {error && (
         <div className="text-center text-danger">
